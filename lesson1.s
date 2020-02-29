@@ -98,3 +98,20 @@
 
         #Procedure Return: Jump register
           jr $ra #returns to an address in a register (return)
+
+        #Byte/Halfword Operations
+          lb rt, offset(rs) #Load Byte & extends the reamaining bits from the offset to 0
+
+          lbu, rt offset(rs) #Load Byte & extends the reamaining bits from the offset to the extended sign
+
+          lh rt, offset(rs) #Load Halfword & extends the reamaining bits from the offset to 0
+
+          lhu rt, offset(rs) #Load Halfword & extends the reamaining bits from the offset to the extended sign
+
+          sb rt, offset(rs) #store rightmost byte
+
+          sh rt, offset(rs) #store rightmost word
+
+          lui rt, constant #Copies 16-bit constant to left 16 of rt & clears right 16 bits of rt to 0
+
+          ori $s0, $s0, 2304 #adds 2304 into register $s0
