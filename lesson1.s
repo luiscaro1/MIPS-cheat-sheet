@@ -7,7 +7,7 @@
    lw $t0, 32($s3)
 
 #storing words
-   sw $t0, 48($s3) #save $t0 into the offset 48 of register $s3 
+   sw $t0, 48($s3) #save $t0 into the offset 48 of register $s3
 
   #adding register with a constant
     addi $s3, $s3, 4
@@ -47,7 +47,8 @@
   #Simple loop
     Loop: sll $t1, $s3, 2 #shifts left and adds zero 2^2 times = 4 shift left w/ 0's
           add $t1, $t1, $s6 #add the adress to $t1 therefore its gonna look in memory like: |value of i|address|
-          lw $t0, 0($t1) #grab the first slot of the register which is the value of i and put it into t0
+
+           $t0, 0($t1) #grab the first slot of the register which is the value of i and put it into t0
           bne $t0, $s5, Exit #if the value of i != k then go to Branch Exit
           addi $s3, $s3, 1 #else increment i by one
           j Loop  #restart the loop
