@@ -115,3 +115,15 @@
           lui rt, constant #Copies 16-bit constant to left 16 of rt & clears right 16 bits of rt to 0
 
           ori $s0, $s0, 2304 #adds 2304 into register $s0
+          #Load Link
+          ll rt, offset(rs) #Loads a word from memory for an atomic-read modify-write
+          #Load Conditional
+          sc rt, offset(rs) #returns 1 if the locaation has not changed since the ll else return 0
+
+          #Synchronization
+
+            try: add $t0, $zero, $s4 #copy the contents of $s4 to $t0
+                  ll $t1, 0($s1) # Load linked
+                  sc $t0, 0($s1) #checks if the ll succeeded
+                  beq $t0, $zero, try #if branch equals to zero try again
+                  add $s4, $zero, $t1 #put the load value in $t1
