@@ -1,0 +1,114 @@
+1.1 Aside from the smart cell phones used by a billion people, list and
+describe four other types of computers.
+
+  a)Personal Computers
+  b)Severs
+  c)Super Computers
+  d)Embedded Computers
+
+1.2 The eight great ideas in computer architecture are similar to ideas
+from other fields. Match the eight ideas from computer architecture, “Design for
+Moore’s Law”, “Use Abstraction to Simplify Design”, “Make the Common Case
+Fast”, “Performance via Parallelism”, “Performance via Pipelining”, “Performance
+via Prediction”, “Hierarchy of Memories”, and “Dependability via Redundancy” to
+the following ideas from other fields:
+a. Assembly lines in automobile manufacturing
+  >> Pipelining
+
+b. Suspension bridge cables
+  >> Parallelism
+
+c. Aircraft and marine navigation systems that incorporate wind information
+  >> Performance Via Prediction
+
+d. Express elevators in buildings
+  >> Make common case fast
+
+e. Library reserve desk
+  >> Hierarchy of Memories
+
+f. Increasing the gate area on a CMOS transistor to decrease its switching time
+  >> Dependability via Redundancy
+
+g. Adding electromagnetic aircraft catapults (which are electrically-powered
+as opposed to current steam-powered models), allowed by the increased power
+generation offered by the new reactor technology
+  >> Design for Moore's Law.
+
+h. Building self-driving cars whose control systems partially rely on existing sensor
+systems already installed into the base vehicle, such as lane departure systems and
+smart cruise control systems
+  >> Use Abstraction to Simplify Design
+
+1.3 Describe the steps that transform a program written in a high-level
+language such as C into a representation that is directly executed by a computer
+processor.
+
+  >> High level language is compiled and translated into assembly language which is then translated into binary machine language
+
+1.4 Assume a color display using 8 bits for each of the primary colors
+  (red, green, blue) per pixel and a frame size of 1280 × 1024.
+
+a. What is the minimum size in bytes of the frame buff er to store a frame?
+    > 1280*1024*3 3932160 bytes
+
+b. How long would it take, at a minimum, for the frame to be sent over a 100
+  Mbit/s network?
+
+  >> 12.5 Mb/s = 3.9Mb/x = 0.312 sec
+
+1.5 Consider three different processors P1, P2, and P3 executing
+the same instruction set. P1 has a 3 GHz clock rate and a CPI of 1.5. P2 has a
+2.5 GHz clock rate and a CPI of 1.0. P3 has a 4.0 GHz clock rate and has a CPI
+of 2.2.
+a. Which processor has the highest performance expressed in instructions per second?
+
+  >> performance = clock rate / CPI instructions per second
+
+  >> performance(p1) = 3x10^9 / 1.5 = 2x10^9 instructions per second
+
+  >> performance(p2) = 2.5x10^9 / 10.0 = 2.5x10^9 instructions per second
+
+  >> performance(p3) = 4x10^9 / 2.2 = 1.81x10^9 instructions per second
+
+  >> Thus, the performance of processor p3 is the best because it takes up less time.
+
+b. If the processors each execute a program in 10 seconds, find the number of
+cycles and the number of instructions.
+
+  >> NumberOfCycles(p) = Time*ClockRate
+
+  >> NumberOfInstructions(p) = NumberOfCycles/CPI
+
+  >> NumberOfCycles(p1) = (10 seconds) * (3x10^9 Hz) = 30x10^9 cycles
+
+  >>NumberOfInstructions(p1) = (30x10^9 cycles)/1.5 = 20x10^9 instructions
+
+  >> NumberOfCycles(p2) = (10 seconds) * (2.5x10^9 Hz) = 25x10^9 cycles
+
+  >> NumberOfInstructions(p2) = (25x10^9 cycles)/1.0 = 25x10^9 instructions
+
+  >> NumberOfCycles(p3) = (10 seconds) * (4.0x10^9 Hz) = 40x10^9 cycles
+
+  >> NumberOfInstructions(p3) = (40x10^9 cycles)/2.2 = 18.8x10^9 instructions
+
+c. We are trying to reduce the execution time by 30% but this leads to an increase
+of 20% in the CPI. What clock rate should we have to get this time reduction?
+
+  >> NewTime = 10 - 0.3 * 10 = 7 seconds
+
+  >> ClockRate(p) = ((NumberOfInstructions)*(CPI))/time
+
+  >> newCPI(p1) = 1.2 * 1.5 = 1.8
+
+  >> NumberOfInstructions(p1) = NumberOfCycles/oldCPI = (30x10^9 cycles) / 1.5 = 20x10^9
+
+  >> ClockRate(p1) = (20x10^9 * 1.8) / 7 = 5.14Ghz
+
+  >>newCPI(p2) = 1.2 * 1.0 = 1.2
+
+  >> ClockRate(p2) = (25x10^9 * 1.2) / 7 = 4.28GHz
+
+  >> newCPI(p3) = 1.2 * 2.2 = 2.64
+
+  >> ClockRate = (18.18x10^9 * 2.64) / 7 = 6.85GHz

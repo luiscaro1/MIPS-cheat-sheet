@@ -127,3 +127,8 @@
                   sc $t0, 0($s1) #checks if the ll succeeded
                   beq $t0, $zero, try #if branch equals to zero try again
                   add $s4, $zero, $t1 #put the load value in $t1
+
+          # Bubble sort
+          swap: sll $t1, $a1, 2   # $t1 = k*4
+                add $t1, $a0, $t1 # $t1 = v + (k*4) -->  #| k value | V value| <-- in memory
+                lw $t0, 0($t1) # $t0 (temp) = v[k]
