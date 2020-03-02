@@ -76,39 +76,76 @@ a. Which processor has the highest performance expressed in instructions per sec
 b. If the processors each execute a program in 10 seconds, find the number of
 cycles and the number of instructions.
 
-  >> NumberOfCycles(p) = Time*ClockRate
+  >> Number_Of_Cycles(p) = Time*Clock_Rate
 
-  >> NumberOfInstructions(p) = NumberOfCycles/CPI
+  >> Number_Of_Instructions(p) = Number_Of_Cycles/CPI
 
-  >> NumberOfCycles(p1) = (10 seconds) * (3x10^9 Hz) = 30x10^9 cycles
+  >> Number_Of_Cycles(p1) = (10 seconds) * (3x10^9 Hz) = 30x10^9 cycles
 
-  >>NumberOfInstructions(p1) = (30x10^9 cycles)/1.5 = 20x10^9 instructions
+  >>Number_Of_Instructions(p1) = (30x10^9 cycles)/1.5 = 20x10^9 instructions
 
-  >> NumberOfCycles(p2) = (10 seconds) * (2.5x10^9 Hz) = 25x10^9 cycles
+  >> Number_Of_Cycles(p2) = (10 seconds) * (2.5x10^9 Hz) = 25x10^9 cycles
 
-  >> NumberOfInstructions(p2) = (25x10^9 cycles)/1.0 = 25x10^9 instructions
+  >> Number_Of_Instructions(p2) = (25x10^9 cycles)/1.0 = 25x10^9 instructions
+  >> Number_Of_Cycles(p3) = (10 seconds) * (4.0x10^9 Hz) = 40x10^9 cycles
 
-  >> NumberOfCycles(p3) = (10 seconds) * (4.0x10^9 Hz) = 40x10^9 cycles
 
-  >> NumberOfInstructions(p3) = (40x10^9 cycles)/2.2 = 18.8x10^9 instructions
+  >> Number_Of_Instructions(p3) = (40x10^9 cycles)/2.2 = 18.8x10^9 instructions
 
 c. We are trying to reduce the execution time by 30% but this leads to an increase
 of 20% in the CPI. What clock rate should we have to get this time reduction?
 
-  >> NewTime = 10 - 0.3 * 10 = 7 seconds
+  >> New_Time = 10 - 0.3 * 10 = 7 seconds
 
-  >> ClockRate(p) = ((NumberOfInstructions)*(CPI))/time
+  >> Clock_Rate(p) = ((Number_Of_Instructions)*(CPI))/time
 
-  >> newCPI(p1) = 1.2 * 1.5 = 1.8
+  >> new_CPI(p1) = 1.2 * 1.5 = 1.8
 
-  >> NumberOfInstructions(p1) = NumberOfCycles/oldCPI = (30x10^9 cycles) / 1.5 = 20x10^9
+  >> Number_Of_Instructions(p1) = Number_Of_Cycles/old_CPI = (30x10^9 cycles) / 1.5 = 20x10^9
 
-  >> ClockRate(p1) = (20x10^9 * 1.8) / 7 = 5.14Ghz
+  >> Clock_Rate(p1) = (20x10^9 * 1.8) / 7 = 5.14Ghz
 
-  >>newCPI(p2) = 1.2 * 1.0 = 1.2
+  >>new_CPI(p2) = 1.2 * 1.0 = 1.2
 
-  >> ClockRate(p2) = (25x10^9 * 1.2) / 7 = 4.28GHz
+  >> Clock_Rate(p2) = (25x10^9 * 1.2) / 7 = 4.28GHz
 
-  >> newCPI(p3) = 1.2 * 2.2 = 2.64
+  >> new_CPI(p3) = 1.2 * 2.2 = 2.64
 
-  >> ClockRate = (18.18x10^9 * 2.64) / 7 = 6.85GHz
+  >> Clock_Rate = (18.18x10^9 * 2.64) / 7 = 6.85GHz
+
+  1.6 Consider two different implementations of the same instruction
+set architecture. The instructions can be divided into four classes according to
+their CPI (class A, B, C, and D). P1 with a clock rate of 2.5 GHz and CPIs of 1, 2, 3, and 3, and P2 with a clock rate of 3 GHz and CPIs of 2, 2, 2, and 2.
+Given a program with a dynamic instruction count of 1.0E6 instructions divided
+into classes as follows: 10% class A, 20% class B, 50% class C, and 20% class D,
+which implementation is faster?
+
+a. What is the global CPI for each implementation?
+
+>> CPU_Time = sum(
+  (Instructions* CPI) / Clock_Rate
+)
+
+>> CPU_Time(p1) = (10^6 * [(0.1 * 1) + (0.2 * 2) + (0.5 *3) + (0.2 * 3)]) / 2.5GHz
+
+>> 1.04ms
+
+>> CPU_Time(p2) = (10^6 * [(0.1 * 2) + (0.2 * 2) + (0.5 * 2 ) + ( 0.2 * 2)]) / 3GHz
+
+>> 0.67ms
+
+>> p2 takes less time and CPU_Time is inversely proportional to performance thus p2 is better.
+
+>> Global_CPI = (CPU_Time * Clock_Rate) / Number_Of_Instructions
+
+>> Global_CPI(p1) = (1.04x10^-3s * 2.5x10^9) / 10^6 = 2.6
+
+>> Global_CPI(p2) = (0.67x10^-3s * 3) / 10^6 = 2.01
+
+b. Find the clock cycles required in both cases.
+
+>> Number_Of_Cycles = Global_CPI * Number_Of_Instructions
+
+>> Number_Of_Cycles(p1) = 2.6x10^6
+
+>> Number_Of_Cycles(p2) = 2.01x10^6
